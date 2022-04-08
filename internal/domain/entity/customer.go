@@ -1,6 +1,7 @@
 package entity
 
 import (
+	"strconv"
 	"time"
 )
 
@@ -44,8 +45,10 @@ func (c *CustomerViewModel) Validate() map[string]string {
 		errorMessages["no_ktp_mustint"] = "No. KTP harus angka"
 	}
 	stringKTP := string(c.NoKTP)
-	if len([]rune(stringKTP)) != 16 {
+	count := len([]rune(stringKTP))
+	if count != 16 {
 		errorMessages["no_ktp_must16"] = "No. KTP harus 16 angka"
+		errorMessages["no_ktp_count"] = strconv.Itoa(count)
 	}
 
 	return errorMessages
