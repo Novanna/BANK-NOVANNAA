@@ -3,6 +3,8 @@ package database
 import (
 	"fmt"
 
+	"Trial/BANK-NOVANNA/internal/domain/entity"
+
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 	"github.com/spf13/viper"
@@ -26,6 +28,8 @@ func InitDB() (*gorm.DB, error) {
 	if err := db.DB().Ping(); err != nil {
 		return nil, err
 	}
+
+	db.AutoMigrate(&entity.Customer{}, &entity.Admin{})
 
 	return db, nil
 
