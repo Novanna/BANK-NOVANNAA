@@ -1,0 +1,38 @@
+version: '3.7'
+services:
+  app:
+    image: novannaaa48/banknovannaaa:1.0.0
+    container_name: go-bank-app
+    build: .
+    ports:
+      - 3001:8181
+    restart: always
+    volumes:
+      - api:/usr/src/app/
+    networks:
+      - default
+
+  postgresdb:
+    image: postgres:latest
+    container_name: db-bank-app
+    restart: always
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_HOST=${DB_HOST}
+    ports: 
+      - '5432:5432'
+    volumes:
+      - database_postgres:/var/lib/postgresql/data
+    networks:
+      - default
+
+volumes:
+  api:
+  database_postgres:
+
+networks:
+  default:
+    external: false
+    name: network-banknovanna

@@ -1,0 +1,12 @@
+App:
+  Port: 8181
+
+Database:
+  Host: "postgresdb"
+  Port: 5432
+  Username: "postgres"
+  Password: "admin123"
+  DBName: "banknovanna"
+
+Jwt:
+  Secret: "q1w2e3r4t5y6"
