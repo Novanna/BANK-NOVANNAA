@@ -39,6 +39,7 @@ func (h *CustomerHandler) SaveCustomer(c *gin.Context) {
 	result, err := h.customerService.SaveCustomer(&customer)
 	if err != nil {
 		response.ResponseError(c, err.Error(), http.StatusInternalServerError)
+		return
 	}
 
 	response.ResponseCreated(c, result)
