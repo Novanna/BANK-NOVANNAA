@@ -1,7 +1,6 @@
 package entity
 
 import (
-	"strconv"
 	"time"
 )
 
@@ -12,8 +11,8 @@ type Customer struct {
 	TanggalLahir string    `json:"tanggal_lahir"`
 	TempatLahir  string    `json:"tempat_lahir"`
 	JenisKelamin string    `json:"jenis_kelamin"`
-	NoKTP        int       `json:"no_ktp"`
-	NoHP         int       `json:"no_hp"`
+	NoKTP        int64     `json:"no_ktp"`
+	NoHP         int64     `json:"no_hp"`
 	CreatedAt    time.Time `json:"createdAt"`
 	UpdatedAt    time.Time `json:"updatedAt"`
 }
@@ -25,8 +24,8 @@ type CustomerViewModel struct {
 	TanggalLahir string `json:"tanggal_lahir"`
 	TempatLahir  string `json:"tempat_lahir"`
 	JenisKelamin string `json:"jenis_kelamin"`
-	NoKTP        int    `json:"no_ktp"`
-	NoHP         int    `json:"no_hp"`
+	NoKTP        int64  `json:"no_ktp"`
+	NoHP         int64  `json:"no_hp"`
 }
 
 func (c *CustomerViewModel) Validate() map[string]string {
@@ -44,7 +43,7 @@ func (c *CustomerViewModel) Validate() map[string]string {
 	if c.NoKTP-c.NoKTP != 0 {
 		errorMessages["no_ktp_mustint"] = "No. KTP harus angka"
 	}
-	stringKTP := strconv.Itoa(c.NoKTP)
+	stringKTP := string(c.NoKTP)
 	if len([]rune(stringKTP)) != 16 {
 		errorMessages["no_ktp_must16"] = "No. KTP harus 16 angka"
 	}
