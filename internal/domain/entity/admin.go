@@ -7,7 +7,7 @@ import (
 )
 
 type Admin struct {
-	ID        int    `gorm:"column:id;primaryKey;autoIncrement" json:"id"`
+	ID        int    `gorm:"column:id;primary_key" json:"id"`
 	FirstName string `gorm:"column:first_name" json:"first_name"`
 	LastName  string `gorm:"column:last_name" json:"last_name"`
 	Email     string `gorm:"column:email" json:"email"`
@@ -27,7 +27,7 @@ type LoginViewModel struct {
 }
 
 type AdminViewModel struct {
-	ID       int    `gorm:"column:id;primaryKey;autoIncrement" json:"id"`
+	ID       int    `gorm:"column:id;primary_key" json:"id"`
 	FullName string `json:"full_name"`
 	Email    string `gorm:"column:email" json:"email"`
 }
