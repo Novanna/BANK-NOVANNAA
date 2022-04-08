@@ -6,27 +6,27 @@ import (
 )
 
 type Customer struct {
-	ID           int       `json:"id"`
-	NamaLengkap  string    `json:"nama_lengkap"`
-	Alamat       string    `json:"alamat"`
-	TanggalLahir string    `json:"tanggal_lahir"`
-	TempatLahir  string    `json:"tempat_lahir"`
-	JenisKelamin string    `json:"jenis_kelamin"`
-	NoKTP        int64     `json:"no_ktp"`
-	NoHP         int64     `json:"no_hp"`
-	CreatedAt    time.Time `json:"createdAt"`
-	UpdatedAt    time.Time `json:"updatedAt"`
+	ID           int       `gorm:"column:id;primaryKey;autoIncrement" json:"id"`
+	NamaLengkap  string    `gorm:"column:nama_lengkap" json:"nama_lengkap"`
+	Alamat       string    `gorm:"column:alamat" json:"alamat"`
+	TanggalLahir string    `gorm:"column:tanggal_lahir" json:"tanggal_lahir"`
+	TempatLahir  string    `gorm:"column:tempat_lahir" json:"tempat_lahir"`
+	JenisKelamin string    `gorm:"column:jenis_kelamin" json:"jenis_kelamin"`
+	NoKTP        int64     `gorm:"column:no_ktp;uniqueIndex" json:"no_ktp"`
+	NoHP         int64     `gorm:"column:no_hp" json:"no_hp"`
+	CreatedAt    time.Time `gorm:"column:createdAt;autoCreateTime" json:"createdAt"`
+	UpdatedAt    time.Time `gorm:"column:updatedAt;autoUpdateTime" json:"updatedAt"`
 }
 
 type CustomerViewModel struct {
-	ID           int    `json:"id"`
-	NamaLengkap  string `json:"nama_lengkap"`
-	Alamat       string `json:"alamat"`
-	TanggalLahir string `json:"tanggal_lahir"`
-	TempatLahir  string `json:"tempat_lahir"`
-	JenisKelamin string `json:"jenis_kelamin"`
-	NoKTP        int64  `json:"no_ktp"`
-	NoHP         int64  `json:"no_hp"`
+	ID           int    `gorm:"column:id;primaryKey;autoIncrement" json:"id"`
+	NamaLengkap  string `gorm:"column:nama_lengkap" json:"nama_lengkap"`
+	Alamat       string `gorm:"column:alamat" json:"alamat"`
+	TanggalLahir string `gorm:"column:tanggal_lahir" json:"tanggal_lahir"`
+	TempatLahir  string `gorm:"column:tempat_lahir" json:"tempat_lahir"`
+	JenisKelamin string `gorm:"column:jenis_kelamin" json:"jenis_kelamin"`
+	NoKTP        int64  `gorm:"column:no_ktp;uniqueIndex" json:"no_ktp"`
+	NoHP         int64  `gorm:"column:no_hp" json:"no_hp"`
 }
 
 func (c *CustomerViewModel) Validate() map[string]string {

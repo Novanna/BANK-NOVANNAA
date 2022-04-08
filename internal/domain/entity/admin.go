@@ -7,29 +7,29 @@ import (
 )
 
 type Admin struct {
-	ID        int    `json:"id"`
-	FirstName string `json:"first_name"`
-	LastName  string `json:"last_name"`
-	Email     string `json:"email"`
-	Password  string `json:"password"`
+	ID        int    `gorm:"column:id;primaryKey;autoIncrement" json:"id"`
+	FirstName string `gorm:"column:first_name" json:"first_name"`
+	LastName  string `gorm:"column:last_name" json:"last_name"`
+	Email     string `gorm:"column:email" json:"email"`
+	Password  string `gorm:"column:password" json:"password"`
 }
 
 type ReqisterViewModel struct {
-	FirstName string `json:"first_name"`
-	LastName  string `json:"last_name"`
-	Email     string `json:"email"`
-	Password  string `json:"password"`
+	FirstName string `gorm:"column:first_name" json:"first_name"`
+	LastName  string `gorm:"column:last_name" json:"last_name"`
+	Email     string `gorm:"column:email" json:"email"`
+	Password  string `gorm:"column:password" json:"password"`
 }
 
 type LoginViewModel struct {
-	Email    string `json:"email"`
-	Password string `json:"password"`
+	Email    string `gorm:"column:email" json:"email"`
+	Password string `gorm:"column:password" json:"password"`
 }
 
 type AdminViewModel struct {
-	ID       int    `json:"id"`
+	ID       int    `gorm:"column:id;primaryKey;autoIncrement" json:"id"`
 	FullName string `json:"full_name"`
-	Email    string `json:"email"`
+	Email    string `gorm:"column:email" json:"email"`
 }
 
 func (a *Admin) EncryptPassword(password string) (string, error) {
