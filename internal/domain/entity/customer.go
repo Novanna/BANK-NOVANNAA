@@ -44,11 +44,11 @@ func (c *CustomerViewModel) Validate() map[string]string {
 	if c.NoKTP-c.NoKTP != 0 {
 		errorMessages["no_ktp_mustint"] = "No. KTP harus angka"
 	}
-	stringKTP := string(c.NoKTP)
+	intKTP := int(c.NoKTP)
+	stringKTP := strconv.Itoa(intKTP)
 	count := len([]rune(stringKTP))
 	if count != 16 {
 		errorMessages["no_ktp_must16"] = "No. KTP harus 16 angka"
-		errorMessages["no_ktp_count"] = strconv.Itoa(count)
 	}
 
 	return errorMessages
